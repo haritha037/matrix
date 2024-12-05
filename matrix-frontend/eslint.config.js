@@ -24,6 +24,7 @@ export default [
       "react-refresh": reactRefresh,
     },
     rules: {
+      "@typescript-eslint/no-unused-vars": "warn",
       "react/prop-types": 0,
       ...js.configs.recommended.rules,
       ...react.configs.recommended.rules,
