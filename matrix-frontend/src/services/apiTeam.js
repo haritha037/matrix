@@ -15,7 +15,7 @@ export async function getTeamApi() {
   return team;
 }
 
-export async function updateCurrentQuestionIdApi(newId) {
+export async function updateTeamApi({ newQuestionId, isFinished }) {
   // Get the authenticated user's ID
   const {
     data: { user },
@@ -30,7 +30,7 @@ export async function updateCurrentQuestionIdApi(newId) {
 
   const { data, error } = await supabase
     .from("team")
-    .update({ currentQuestionId: newId })
+    .update({ currentQuestionId: newQuestionId, isFinished })
     .eq("user_id", user.id)
     .select();
 
