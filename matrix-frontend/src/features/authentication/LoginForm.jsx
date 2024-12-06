@@ -22,15 +22,17 @@ function LoginForm() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-96">
-        <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
+    <div className="flex justify-center items-center min-h-screen bg-[url('/pills.jpg')] bg-center bg-[size:180%] ">
+      <div className="bg-background-medium p-8 rounded-lg  w-96 shadow-colorful">
+        {/* <h2 className="text-2xl font-bold text-center mb-6 text-gray-300">
+          Login
+        </h2> */}
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-gray-300"
             >
               Email
             </label>
@@ -40,14 +42,14 @@ function LoginForm() {
               disabled={isLoading}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 mt-1 border bg-gray-700 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-50"
               placeholder="Enter your email"
             />
           </div>
           <div>
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-gray-300"
             >
               Password
             </label>
@@ -57,14 +59,14 @@ function LoginForm() {
               disabled={isLoading}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 mt-1 border bg-gray-700 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-8 text-gray-50"
               placeholder="Enter your password"
             />
           </div>
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full py-2 bg-primary text-green-950 font-semibold rounded-lg hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
           >
             Login
           </button>

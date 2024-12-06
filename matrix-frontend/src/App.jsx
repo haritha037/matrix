@@ -7,11 +7,12 @@ import PageNotFound from "./pages/PageNotFound";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
+import Home from "./pages/Home";
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 10000, //in milliseconds
+      staleTime: 0 * 10000, //in milliseconds
     },
   },
 });
@@ -28,6 +29,7 @@ function App() {
             <Route path="dashboard" element={<Dashboard />} />
           </Route>
           <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
@@ -39,8 +41,8 @@ function App() {
         }}
         toastOptions={{
           style: {
-            backgroundColor: "var(--color-grey-0)",
-            color: "var(--color-grey-700)",
+            background: "#333", // Dark background
+            color: "#fff", // Light text
             fontSize: "16px",
             maxWidth: "500px",
             padding: "16px 24px",
@@ -54,6 +56,7 @@ function App() {
             duration: 5000,
           },
         }}
+        containerClassName="z-50"
       />
     </QueryClientProvider>
   );

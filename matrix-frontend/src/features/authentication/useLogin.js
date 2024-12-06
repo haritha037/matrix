@@ -12,7 +12,7 @@ export function useLogin() {
     onSuccess: (user) => {
       console.log(user);
       toast.success("Logged in successfully");
-      navigate("/question");
+      navigate("/home");
     },
 
     onError: (error) => toast.error(error.message),
