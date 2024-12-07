@@ -29,7 +29,8 @@ function Question() {
   const { isUpdating, updateTeamMu } = useUpdateTeam();
 
   const isLoading =
-    isLoadingTeam || isLoadingQuestion || isUpdating || isFetching;
+    // isLoadingTeam || isLoadingQuestion || isUpdating || isFetching;
+    isLoadingTeam || isLoadingQuestion || isUpdating;
 
   const navigate = useNavigate();
 

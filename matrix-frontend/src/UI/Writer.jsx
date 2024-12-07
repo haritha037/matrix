@@ -1,11 +1,12 @@
 import { TypeAnimation } from "react-type-animation";
 
 function Writer({ text }) {
-  const hintsArr = text.split("-").join("\n");
+  const hintsString = text.split("-").join("\n");
   return (
     <TypeAnimation
-      key={hintsArr} // This forces re-render when the `text` changes
-      sequence={hintsArr}
+      key={hintsString} // This forces re-render when the `text` changes
+      // sequence={hintsString}
+      sequence={["", 1000, hintsString]}
       wrapper="span"
       cursor={false}
       speed={50}
