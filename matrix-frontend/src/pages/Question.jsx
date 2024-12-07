@@ -87,8 +87,8 @@ function Question() {
   };
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center z-20">
-      <div className="flex items-center justify-center flex-col mx-24 gap-8 bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 w-[800px] p-8 rounded-2xl">
+    <div className="h-screen flex flex-col items-center justify-center z-20 px-5">
+      <div className="flex items-center justify-center flex-col mx-24 gap-8 bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 w-full max-w-2xl p-8 rounded-2xl">
         <div className="computer bg-gradient-to-r  from-gray-900  to-gray-950  text-crtGlow  rounded-2xl h-96 p-8 w-full border-2 border-t-8  animate-glow">
           {/* {findQuestionById(team.currentQuestionId, questions).question} */}
 
@@ -110,12 +110,12 @@ function Question() {
             />
           )} */}
         </div>
-        <div className="flex gap-4  align-center justify-between w-full">
+        <div className="flex flex-col sm:flex-row gap-4  items-center justify-between w-full">
           <ProgressBar
             totalQuestions={questions?.length}
             currentQuestionId={team?.currentQuestionId}
           />
-          <div className="flex gap-3 items-center">
+          <div className="flex flex-col sm:flex-row gap-3 items-center">
             <input
               type="text"
               disabled={isLoading}
@@ -132,7 +132,7 @@ function Question() {
               className={`px-8 py-2 rounded-lg font-semibold text-white
                 bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400
                 disabled:bg-green-300 disabled:cursor-not-allowed
-                dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-500 dark:disabled:bg-green-400 border-4 border-green-900`}
+                dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-500 dark:disabled:bg-green-400 `}
               onClick={handleSubmit}
             >
               Next
