@@ -22,7 +22,7 @@ function LoginForm() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-[url('/pills.jpg')] bg-center bg-[size:180%] ">
+    <div className="flex justify-center items-center min-h-screen bg-[url('/pills.jpg')] bg-center bg-[size:180%] bg-background-dark">
       <div className="bg-background-medium p-8 rounded-lg  w-96 shadow-colorful">
         {/* <h2 className="text-2xl font-bold text-center mb-6 text-gray-300">
           Login

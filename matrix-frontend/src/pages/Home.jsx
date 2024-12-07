@@ -25,7 +25,7 @@ function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-[url('/bg-matrix.jpg')] bg-center bg-cover flex flex-col items-center justify-center text-white text-center">
+    <div className="min-h-screen bg-[url('/bg-matrix.jpg')] bg-center bg-cover flex flex-col items-center justify-center text-white text-center bg-background-dark">
       {isLoading ? (
         <LoadingIndicator />
       ) : (
