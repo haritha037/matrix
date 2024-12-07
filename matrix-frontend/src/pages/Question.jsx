@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { useGetQuestions } from "../features/questions/useGetQuestions";
 import { useGetTeam } from "../features/teams/useGetTeam";
 import toast from "react-hot-toast";
-import { updateTeamApi } from "../services/apiTeam";
 import { useNavigate } from "react-router-dom";
 import Writer from "../UI/Writer";
 import ProgressBar from "../UI/ProgressBar";
 import { Mosaic } from "react-loading-indicators";
+import { useUpdateTeam } from "../features/teams/useUpdateTeam";
+import LoadingIndicator from "../UI/LoadingIndicator";
 
 function findQuestionById(id, questions) {
   if (!questions) {
@@ -17,13 +18,18 @@ function findQuestionById(id, questions) {
 
 function Question() {
   const { isLoading: isLoadingQuestion, questions } = useGetQuestions();
+
   const {
     isLoading: isLoadingTeam,
     team,
+    isFetching,
     // team: { currentQuestionId, isFinished } = {},
   } = useGetTeam();
 
-  const isLoading = isLoadingTeam || isLoadingQuestion;
+  const { isUpdating, updateTeamMu } = useUpdateTeam();
+
+  const isLoading =
+    isLoadingTeam || isLoadingQuestion || isUpdating || isFetching;
 
   const navigate = useNavigate();
 
@@ -54,7 +60,11 @@ function Question() {
     }
 
     if (team.currentQuestionId === totalQuestions) {
-      updateTeamApi({ ...team, isFinished: true });
+      const finishedAt = new Date();
+      const startedAt = new Date(team.startedAt);
+      const timeSpent = finishedAt - startedAt;
+
+      updateTeamMu({ ...team, isFinished: true, timeSpent, finishedAt });
 
       toast.success("You have successfully completed all the tasks!");
       navigate("/dashboard");
@@ -65,7 +75,7 @@ function Question() {
     setAnswer("");
 
     // if they match, update the currentQuestionId globally
-    updateTeamApi({ ...team, currentQuestionId: team.currentQuestionId + 1 });
+    updateTeamMu({ ...team, currentQuestionId: team.currentQuestionId + 1 });
     // refetching is done by realtime subscription
   }
 
@@ -76,21 +86,21 @@ function Question() {
     }
   };
 
-  if (isLoading) {
-    return (
-      <div className="h-screen flex flex-col items-center justify-center bg-background-dark ">
-        <Mosaic color="#32cd32" size="medium" text="" textColor="" />
-      </div>
-    );
-  }
-
   return (
-    <div className="h-screen flex flex-col items-center justify-center  bg-background-dark ">
+    <div className="h-screen flex flex-col items-center justify-center z-20">
       <div className="flex items-center justify-center flex-col mx-24 gap-8 bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 w-[800px] p-8 rounded-2xl">
         <div className="computer bg-gradient-to-r  from-gray-900  to-gray-950  text-crtGlow  rounded-2xl h-96 p-8 w-full border-2 border-t-8  animate-glow">
-          <Writer
-            text={findQuestionById(team.currentQuestionId, questions).question}
-          />
+          {/* {findQuestionById(team.currentQuestionId, questions).question} */}
+
+          {isLoading ? (
+            <LoadingIndicator />
+          ) : (
+            <Writer
+              text={
+                findQuestionById(team.currentQuestionId, questions).question
+              }
+            />
+          )}
 
           {/* {questions && currentQuestionId && (
             // findQuestionById(currentQuestionId, questions).question
@@ -105,7 +115,7 @@ function Question() {
             totalQuestions={questions?.length}
             currentQuestionId={team?.currentQuestionId}
           />
-          <div>
+          <div className="flex gap-3 items-center">
             <input
               type="text"
               disabled={isLoading}

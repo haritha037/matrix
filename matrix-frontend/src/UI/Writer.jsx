@@ -1,29 +1,21 @@
 import { TypeAnimation } from "react-type-animation";
 
 function Writer({ text }) {
+  const hintsArr = text.split("-").join("\n");
   return (
     <TypeAnimation
-      key={text} // This forces re-render when the `text` changes
-      sequence={[
-        // // Same substring at the start will only be typed out once, initially
-        // "We produce food for Mice",
-        // 1000, // wait 1s before replacing "Mice" with "Hamsters"
-        // "We produce food for Hamsters",
-        // 1000,
-        // "We produce food for Guinea Pigs",
-        // 1000,
-        // "We produce food for Chinchillas",
-        // 1000,
-        text,
-      ]}
+      key={hintsArr} // This forces re-render when the `text` changes
+      sequence={hintsArr}
       wrapper="span"
+      cursor={false}
       speed={50}
       style={{
         fontSize: "2em",
         display: "inline-block",
         fontFamily: "monospace",
+        whiteSpace: "pre-line",
       }}
-      repeat={1}
+      repeat={0}
     />
   );
 }

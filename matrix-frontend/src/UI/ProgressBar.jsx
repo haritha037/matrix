@@ -6,7 +6,7 @@ function ProgressBar({ totalQuestions, currentQuestionId }) {
     if (questionId === currentQuestionId) {
       return "bg-gray-300 text-gray-700"; // current question (gray)
     }
-    return "bg-gray-200 text-gray-500"; // upcoming questions (light gray)
+    return "bg-gray-500 text-gray-700"; // upcoming questions (light gray)
   };
 
   return (

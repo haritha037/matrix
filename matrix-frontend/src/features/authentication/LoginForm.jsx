@@ -42,7 +42,7 @@ function LoginForm() {
               disabled={isLoading}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 mt-1 border bg-gray-700 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-50"
+              className="w-full px-4 py-2 mt-1 border bg-gray-700 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 text-gray-50"
               placeholder="Enter your email"
             />
           </div>

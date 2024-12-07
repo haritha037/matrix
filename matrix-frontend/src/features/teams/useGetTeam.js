@@ -6,7 +6,11 @@ import { useSubscribeToTeamChanges } from "./useSubscribeToTeams";
 export function useGetTeam() {
   const queryClient = useQueryClient();
 
-  const { isLoading, data: team } = useQuery({
+  const {
+    isLoading,
+    data: team,
+    isFetching,
+  } = useQuery({
     queryKey: ["team"],
     queryFn: getTeamApi,
   });
@@ -26,5 +30,5 @@ export function useGetTeam() {
   //   )
   //   .subscribe();
 
-  return { isLoading, team };
+  return { isLoading, team, isFetching };
 }

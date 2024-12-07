@@ -12,7 +12,7 @@ import Home from "./pages/Home";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 0 * 10000, //in milliseconds
+      staleTime: 5 * 60 * 1000, //in milliseconds
     },
   },
 });
@@ -24,7 +24,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>
-            <Route index element={<Navigate replace to="/question" />} />
+            <Route index element={<Navigate replace to="/login" />} />
             <Route path="question" element={<Question />} />
             <Route path="dashboard" element={<Dashboard />} />
           </Route>
