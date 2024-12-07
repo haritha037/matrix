@@ -17,7 +17,9 @@ function Home() {
   const isLoading = isLoadingTeam || isUpdating;
 
   function handleStart() {
-    updateTeamMu({ ...team, startedAt: new Date() });
+    if (!team.startedAt) {
+      updateTeamMu({ ...team, startedAt: new Date() });
+    }
 
     navigate("/question");
   }
