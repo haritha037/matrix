@@ -89,7 +89,7 @@ function Question() {
   return (
     <div className="h-screen flex flex-col items-center justify-center z-20 px-5">
       <div className="flex items-center justify-center flex-col mx-24 gap-8 bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 w-full max-w-2xl p-8 rounded-2xl">
-        <div className="computer bg-gradient-to-r  from-gray-900  to-gray-950  text-crtGlow  rounded-2xl h-96 p-8 w-full border-2 border-t-8  animate-glow">
+        <div className="computer bg-gradient-to-r  from-gray-900  to-gray-950  text-crtGlow  rounded-2xl h-96 p-8 w-full border-2 border-t-8  overflow-auto">
           {/* {findQuestionById(team.currentQuestionId, questions).question} */}
 
           {isLoading ? (
