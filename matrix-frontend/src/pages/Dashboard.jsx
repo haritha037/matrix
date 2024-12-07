@@ -1,4 +1,4 @@
-import TeamsList from "../features/teams/teamsList";
+import TeamsList from "../features/teams/TeamsList";
 
 function Dashboard() {
   return (
